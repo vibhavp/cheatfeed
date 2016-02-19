@@ -73,7 +73,7 @@ window.addEventListener('load', function () {
 	    case "PlayerHealed":
 		var str = "<li> "+evt.data.player1.username+" <b>healed</b> "+evt.data.player2.username+" for <font color='red'>"+evt.data.healed+"</font> health</li>"
 		$("ul").append(str)
-	    case "PlayerKilledMedic"
+	    case "PlayerKilledMedic":
 		$("ul").append("<li> "+evt.data.player1.username+" <b>killed medic</b> "+evt.data.player2.username+"</li>")
 	    case "PlayerUberFinished":
 		$("ul").append("<li> <b>ubercharge finished</b> for "+evt.data.player1.username+"</li>")
@@ -81,19 +81,24 @@ window.addEventListener('load', function () {
 		$("ul").append("<li> capture of point "+evt.data.cp+", "+evt.data.cpname+" <b>blocked</b> by "+evt.data.player1.username)
 	    case "PlayerItemPickup":
 		var str = "<li> "+evt.data.player.username+" picked up "+evt.data.item
-		if evt.data.healing != 0 {
+		if (evt.data.healing != 0) {
 		    str += " (<b>healing "+evt.data.healing+"</b>) </li>"
 		}
 
 		$("ul").append(str)
+		break;
 	    case "GameOver":
 		$("ul").append("<li> Game over </li>")
+		break;
 	    case "WorldRoundWin":
 		$("ul").append("<li> Team "+evt.data.team+" Won </li>")
+		break;
 	    case "TeamScoreUpdate":
 		$("ul").append("<li> Team "+evt.data.team+" has "+evt.data.score+" points</li>")
+		break;
 	    case "WorldRoundWin":
 		$("ul").append("<li> Team"+evt.data.team+" won </li>")
+		break;
 	    }
 	}
     }
