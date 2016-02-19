@@ -10,22 +10,7 @@ import (
 	"golang.org/x/net/xsrftoken"
 )
 
-var createForm = template.Must(template.New("form").Parse(`
-<html>
-  <body>
-    Automatic Setup
-    <form action="/create" method="get">
-      RCON Address:<br>
-      <input type="text" name="addr"><br>
-      Password:<br>
-      <input type="text" name="password"><br><br>
-      <input type="hidden" name="xsrf-token" value="{{.XSRFToken}}">
-      <input type="submit" value="Submit">
-    </form>
-    Manual Setup (WIP)
-  </body>
-</html>
-`))
+var createForm = template.Must(template.ParseFiles("create.html"))
 
 var key string
 
